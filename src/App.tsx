@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import TextInput from './components/TextInput/TextInput';
+import Form from './components/Form/Form';
 
 const App = () => (
   <div className="App">
-    <TextInput />
+    <Form />
   </div>
 );
 
