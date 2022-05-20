@@ -1,0 +1,29 @@
+.input-text {
+    text-align: left;
+    color: #512b2b;
+}
+
+.input {
+    border: 1px solid #d4c4bc;
+    border-bottom: 2px solid #72605e;
+    border-radius: 2px 2px 0 0;
+    padding: 0 0.75rem;
+    height: 3rem;
+    color: #512b2b;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    &:focus {
+        border: 2px solid #72605e;
+    }
+}
+
+.label {
+    max-width: max-content;
+}
+
+.label-block {
+    max-width: max-content;
+    padding: 10px;
+}
