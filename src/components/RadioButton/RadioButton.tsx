@@ -6,10 +6,11 @@ type RadioButtonProps = {
     value: string,
     onRadioChange: (value: string) => void,
     btnName: string,
+    checked: boolean,
 }
 
 const RadioButton: FC<RadioButtonProps> = ({
-  title, value, onRadioChange, btnName,
+  title, value, onRadioChange, btnName, checked,
 }) => (
   <div className="radio-wrapper">
     <label className="radio-label" htmlFor={value}>
@@ -17,6 +18,7 @@ const RadioButton: FC<RadioButtonProps> = ({
         className="radio-btn"
         id={value}
         value={value}
+        checked={checked}
         name={btnName}
         type="radio"
         onChange={(e) => { onRadioChange(e.target.value); }}

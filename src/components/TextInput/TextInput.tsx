@@ -4,13 +4,14 @@ import './text-input.scss';
 type TextInputProps = {
     title: string,
     label: string,
+    errorMessage?: string,
     inputType: string,
     inputValue: string,
     onInputChange: (value: string) => void
 }
 
 const TextInput: FC<TextInputProps> = ({
-  title, label, inputType, inputValue, onInputChange,
+  title, label, inputType, inputValue, onInputChange, errorMessage,
 }) => {
   console.log(1);
 
@@ -27,6 +28,7 @@ const TextInput: FC<TextInputProps> = ({
             onInputChange(e.target.value);
           }}
         />
+        <p>{errorMessage}</p>
       </label>
     </div>
   );

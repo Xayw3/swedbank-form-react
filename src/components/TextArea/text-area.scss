@@ -14,3 +14,11 @@
 .textarea-message {
     text-align: start;
 }
+
+.tooltip-info {
+    display: none;
+}
+
+.tooltip.active .tooltip-info{
+
+}
