@@ -8,10 +8,11 @@ type TextInputProps = {
     inputType: string,
     inputValue: string,
     onInputChange: (value: string) => void
+    className: string,
 }
 
 const TextInput: FC<TextInputProps> = ({
-  title, label, inputType, inputValue, onInputChange, errorMessage,
+  title, label, inputType, inputValue, onInputChange, errorMessage, className,
 }) => {
   console.log(1);
 
@@ -20,7 +21,7 @@ const TextInput: FC<TextInputProps> = ({
       <label className="label" htmlFor={label}>
         <p className="input-text">{title}</p>
         <input
-          className="input"
+          className={`input ${className}`}
           id={label}
           type={inputType}
           value={inputValue}
@@ -28,7 +29,7 @@ const TextInput: FC<TextInputProps> = ({
             onInputChange(e.target.value);
           }}
         />
-        <p>{errorMessage}</p>
+        <p className="error">{errorMessage}</p>
       </label>
     </div>
   );

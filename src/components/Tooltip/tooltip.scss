@@ -4,9 +4,12 @@
 }
 
 .tooltip-target {
-    padding: 5px;
-    margin: -1px;
+    border: 1px solid #512b2b;
+    color: #512b2b;
+    border-radius: 50%;
     display: flex;
+    font-size: 10px;
+    margin-left: 5px;
 }
 
 .tooltip-container {
@@ -17,17 +20,18 @@
     justify-content: center;
     align-items: center;
     left: 50%;
-    top: calc(100% + 5px);
+    bottom: calc(100% + 5px);
     pointer-events: none;
 }
 
 .tooltip-box {
     position: relative;
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     text-align: center;
     border-radius: 5px;
     padding: 10px 8px;
+    box-shadow: 0 0 10px 0;
 
     &::after {
         content: '';
@@ -36,8 +40,8 @@
         height: 1px;
         border-width: 5px;
         border-style: solid;
-        border-color: transparent transparent #000 transparent;
+        border-color: #fff transparent transparent transparent;
         left: calc(50% - 4px);
-        bottom: 100%;
+        top: 100%;
     }
 }

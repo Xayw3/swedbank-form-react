@@ -13,8 +13,8 @@ const Select: FC<SelectProps> = ({
 }) => {
   const optionsArr = optionsData;
 
-  const options = optionsArr.map((text, i) => (
-    <option key={Math.random()} value={i}>{text}</option>
+  const options = optionsArr.map((text) => (
+    <option key={Math.random()} value={text}>{text}</option>
   ));
 
   return (

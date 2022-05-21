@@ -1,6 +1,6 @@
 .btns-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .btn-back {
-    background-color: transparent;
+    background-color: #fff;
     border-color: #512b2b;
     color: #512b2b;
 

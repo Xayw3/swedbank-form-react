@@ -8,25 +8,41 @@ type SummaryPageProps = {
     phone: string,
     select: string,
     message: string,
+    signEmail?: any,
+    signPhone?: any
 }
 
 const SummaryPage: FC<SummaryPageProps> = ({
-  fullName, gender, email, phone, select, message,
+  fullName, gender, email, phone, select, message, signEmail, signPhone,
 }) => (
-  <div>
-    <div>
-      <p>{fullName}</p>
-      <p>{gender}</p>
+  <div className="summary">
+    <div className="summary-block">
+      <h2 className="summary-title">
+        Personal information
+      </h2>
+      <p>{`Full name: ${fullName}`}</p>
+      <p>{`Gender: ${gender}`}</p>
     </div>
-    <div>
-      <p>{email}</p>
-      <p>{phone}</p>
+    <div className="summary-block">
+      <h2 className="summary-title">
+        Contact information
+      </h2>
+      <p>{`Email adress: ${email}`}</p>
+      <p>{signEmail}</p>
+      <p>{`Phone number: ${phone}`}</p>
+      <p>{signPhone}</p>
     </div>
-    <div>
+    <div className="summary-block">
+      <h2 className="summary-title">
+        Payment method
+      </h2>
       <p>{select}</p>
     </div>
-    <div>
-      <p>{message}</p>
+    <div className="summary-block">
+      <h2 className="summary-title">
+        Details
+      </h2>
+      <p>{`Details: ${message}`}</p>
     </div>
   </div>
 );

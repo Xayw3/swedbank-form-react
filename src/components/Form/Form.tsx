@@ -67,7 +67,7 @@ const Form = () => {
     } else if (!data.email.includes('@')) {
       setError('The email adress must include "@"');
     } else if (!data.email.endsWith('.lv') && !data.email.endsWith('.com')) {
-      setError('The email adress must end with ".lv" or ".com"');
+      setError('Incorrect email adress');
     } else if (onlyNumbers.test(data.phoneNumber)) {
       setNewError('Only digits');
     } else if (data.phoneNumber.length <= 8) {
@@ -90,8 +90,10 @@ const Form = () => {
   return (
     <form className="form" onSubmit={(e) => e.preventDefault()}>
       {activeQuestion === 0 && (
-      <fieldset>
+      <fieldset className="form-block">
+        <h2 className="form-title">Name</h2>
         <TextInput
+          className={error && 'error'}
           title="First name"
           label="first-name"
           inputType="name"
@@ -100,6 +102,7 @@ const Form = () => {
           onInputChange={(value) => setData({ ...data, firstName: value })}
         />
         <TextInput
+          className={error && 'error'}
           title="Last name"
           label="last-name"
           inputType="name"
@@ -114,7 +117,8 @@ const Form = () => {
       </fieldset>
       )}
       {activeQuestion === 1 && (
-      <fieldset>
+      <fieldset className="form-block">
+        <h2 className="form-title">Gender</h2>
         <RadioButton
           title="Male"
           value="male"
@@ -137,8 +141,10 @@ const Form = () => {
       </fieldset>
       )}
       {activeQuestion === 2 && (
-        <fieldset>
+        <fieldset className="form-block">
+          <h2 className="form-title">Contact information</h2>
           <TextInput
+            className={error && 'error'}
             title="Email"
             label="email"
             inputType="email"
@@ -147,6 +153,7 @@ const Form = () => {
             errorMessage={error}
           />
           <TextInput
+            className={error && 'error'}
             title="Phone"
             label="phone"
             inputType="tel"
@@ -154,24 +161,26 @@ const Form = () => {
             onInputChange={(value) => setData({ ...data, phoneNumber: value })}
             errorMessage={newError}
           />
-          <Checkbox
-            checked={data.emailCheck}
-            label="sign-up-email"
-            title="Sign me up for emails"
-            onCheckboxChange={() => (
-              data.emailCheck === false
-                ? setData({ ...data, emailCheck: true }) : setData({ ...data, emailCheck: false })
-            )}
-          />
-          <Checkbox
-            checked={data.phoneCheck}
-            label="sign-up-message"
-            title="Sign me up for text messages"
-            onCheckboxChange={() => (
-              data.phoneCheck === false
-                ? setData({ ...data, phoneCheck: true }) : setData({ ...data, phoneCheck: false })
-            )}
-          />
+          <div className="form-checkboxes">
+            <Checkbox
+              checked={data.emailCheck}
+              label="sign-up-email"
+              title="Sign me up for emails"
+              onCheckboxChange={() => (
+                data.emailCheck === false
+                  ? setData({ ...data, emailCheck: true }) : setData({ ...data, emailCheck: false })
+              )}
+            />
+            <Checkbox
+              checked={data.phoneCheck}
+              label="sign-up-message"
+              title="Sign me up for text messages"
+              onCheckboxChange={() => (
+                data.phoneCheck === false
+                  ? setData({ ...data, phoneCheck: true }) : setData({ ...data, phoneCheck: false })
+              )}
+            />
+          </div>
           <Buttons
             onNext={() => contactInfoError()}
             onBack={() => { setActiveQuestion(activeQuestion - 1); }}
@@ -179,7 +188,8 @@ const Form = () => {
         </fieldset>
       )}
       {activeQuestion === 3 && (
-        <fieldset>
+        <fieldset className="form-block">
+          <h2 className="form-title">Payment method</h2>
           <Select
             selectValue={selectValue}
             selectName="payment"
@@ -194,7 +204,7 @@ const Form = () => {
         </fieldset>
       )}
       {activeQuestion === 4 && (
-        <fieldset>
+        <fieldset className="form-block">
           <TextArea textValue={data.message} onTextChange={(value) => setData({ ...data, message: value })} />
           {error && <p>{error}</p>}
           <Buttons
@@ -211,6 +221,8 @@ const Form = () => {
           phone={data.phoneNumber}
           select={data.select}
           message={data.message}
+          signEmail={data.emailCheck && 'Sign up to emails'}
+          signPhone={data.phoneCheck && 'Sign up to messages'}
         />
       )}
     </form>

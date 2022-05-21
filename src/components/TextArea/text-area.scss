@@ -9,6 +9,7 @@
     font-size: 1rem;
     line-height: 1.5;
     width: 100%;
+    height: auto;
 }
 
 .textarea-message {
@@ -19,6 +20,11 @@
     display: none;
 }
 
-.tooltip.active .tooltip-info{
+.message-wrapper {
+    display: flex;
+    align-items: center;
+}
 
+.textarea-wrapper {
+    margin-bottom: 32px;
 }
