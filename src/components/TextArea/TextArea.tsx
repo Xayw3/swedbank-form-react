@@ -1,10 +1,16 @@
+import { FC } from 'react';
 import './text-area.scss';
 
-const TextArea = () => (
+type TextAreaProps = {
+    onTextChange: (value: string) => void,
+    textValue: string,
+}
+
+const TextArea: FC<TextAreaProps> = ({ onTextChange, textValue }) => (
   <div className="textarea-wrapper">
     <label htmlFor="name">
       <p className="textarea-message">Message</p>
-      <textarea className="textarea" id="name" />
+      <textarea value={textValue} onChange={(e) => { onTextChange(e.target.value); }} className="textarea" id="name" />
     </label>
   </div>
 );

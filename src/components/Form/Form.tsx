@@ -5,6 +5,7 @@ import Buttons from '../Buttons/Buttons';
 import Checkbox from '../Checkbox/Checkbox';
 import RadioButton from '../RadioButton/RadioButton';
 import Select from '../Select/Select';
+import SummaryPage from '../SummaryPage/SummaryPage';
 import TextArea from '../TextArea/TextArea';
 import TextInput from '../TextInput/TextInput';
 import './form.scss';
@@ -114,12 +115,22 @@ const Form = () => {
       )}
       {activeQuestion === 4 && (
         <fieldset>
-          <TextArea />
+          <TextArea textValue={data.message} onTextChange={(value) => setData({ ...data, message: value })} />
           <Buttons
             onNext={() => { setActiveQuestion(activeQuestion + 1); }}
             onBack={() => { setActiveQuestion(activeQuestion - 1); }}
           />
         </fieldset>
+      )}
+      {activeQuestion === 5 && (
+        <SummaryPage
+          fullName={`${data.firstName} ${data.lastName}`}
+          gender={data.gender}
+          email={data.email}
+          phone={data.phoneNumber}
+          select={data.select}
+          message={data.message}
+        />
       )}
     </form>
   );

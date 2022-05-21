@@ -7,6 +7,7 @@ const formData = {
   emailCheck: false,
   phoneCheck: false,
   select: '',
+  message: '',
 };
 
 export default formData;
