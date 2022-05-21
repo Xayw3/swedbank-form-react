@@ -5,6 +5,7 @@ import Buttons from '../Buttons/Buttons';
 import Checkbox from '../Checkbox/Checkbox';
 import RadioButton from '../RadioButton/RadioButton';
 import Select from '../Select/Select';
+import TextArea from '../TextArea/TextArea';
 import TextInput from '../TextInput/TextInput';
 import './form.scss';
 
@@ -105,6 +106,15 @@ const Form = () => {
             optionsData={paymentQuestions}
             onSelectChange={(value) => { setData({ ...data, select: value }); setSelectValue(value); }}
           />
+          <Buttons
+            onNext={() => { setActiveQuestion(activeQuestion + 1); }}
+            onBack={() => { setActiveQuestion(activeQuestion - 1); }}
+          />
+        </fieldset>
+      )}
+      {activeQuestion === 4 && (
+        <fieldset>
+          <TextArea />
           <Buttons
             onNext={() => { setActiveQuestion(activeQuestion + 1); }}
             onBack={() => { setActiveQuestion(activeQuestion - 1); }}
