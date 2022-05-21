@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import formData from '../../data/formData';
+import paymentQuestions from '../../data/paymentQuestions';
 import Buttons from '../Buttons/Buttons';
 import Checkbox from '../Checkbox/Checkbox';
 import RadioButton from '../RadioButton/RadioButton';
+import Select from '../Select/Select';
 import TextInput from '../TextInput/TextInput';
 import './form.scss';
 
 const Form = () => {
   const [data, setData] = useState(formData);
   const [activeQuestion, setActiveQuestion] = useState(0);
+  const [selectValue, setSelectValue] = useState('');
 
   return (
     <form>
@@ -87,6 +90,20 @@ const Form = () => {
               data.phoneCheck === false
                 ? setData({ ...data, phoneCheck: true }) : setData({ ...data, phoneCheck: false })
             )}
+          />
+          <Buttons
+            onNext={() => { setActiveQuestion(activeQuestion + 1); }}
+            onBack={() => { setActiveQuestion(activeQuestion - 1); }}
+          />
+        </fieldset>
+      )}
+      {activeQuestion === 3 && (
+        <fieldset>
+          <Select
+            selectValue={selectValue}
+            selectName="payment"
+            optionsData={paymentQuestions}
+            onSelectChange={(value) => { setData({ ...data, select: value }); setSelectValue(value); }}
           />
           <Buttons
             onNext={() => { setActiveQuestion(activeQuestion + 1); }}

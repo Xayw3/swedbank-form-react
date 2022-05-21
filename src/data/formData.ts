@@ -6,6 +6,7 @@ const formData = {
   phoneNumber: '',
   emailCheck: false,
   phoneCheck: false,
+  select: '',
 };
 
 export default formData;
